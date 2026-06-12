@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: day12-production-agent
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: AGENT_API_KEY
+        generateValue: true
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: day12-agent-redis
+          property: connectionString
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "10"
+      - key: MONTHLY_BUDGET_USD
+        value: "10.0"
+
+  - type: redis
+    name: day12-agent-redis
+    plan: starter
+    ipAllowList: []

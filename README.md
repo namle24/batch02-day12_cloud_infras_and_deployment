@@ -6,6 +6,51 @@
 
 ---
 
+## Final Submission
+
+Bản nộp hoàn chỉnh nằm ở root repo theo đúng checklist chấm điểm:
+
+```text
+app/                  # FastAPI production agent
+utils/mock_llm.py      # Mock LLM
+Dockerfile             # Multi-stage image
+docker-compose.yml     # Nginx + agent + Redis stack
+nginx/nginx.conf       # Load balancer config
+requirements.txt
+.env.example
+railway.toml
+render.yaml
+MISSION_ANSWERS.md
+DEPLOYMENT.md
+```
+
+Chạy local:
+
+```bash
+docker compose up --build
+```
+
+Test nhanh:
+
+```bash
+curl http://localhost/health
+curl http://localhost/ready
+curl -X POST http://localhost/ask \
+  -H "X-API-Key: dev-key-change-me" \
+  -H "Content-Type: application/json" \
+  -d '{"user_id":"test","question":"Hello"}'
+```
+
+Scale test:
+
+```bash
+docker compose up -d --scale agent=3
+```
+
+Trước khi nộp, deploy lên Railway hoặc Render rồi điền public URL và screenshots thật vào `DEPLOYMENT.md`.
+
+---
+
 ## Cấu Trúc Project
 
 ```
