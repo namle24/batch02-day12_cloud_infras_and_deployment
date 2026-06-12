@@ -3,7 +3,7 @@
 ### 1. File Solution.md
   - Đáp án các bài codelab từ 1->5
 
-### 2. Project - Lab Assignemt
+### 2. Project - Lab Assiggment
   - Repalce project hiện tài trong 06-lam-complete bằng dự án cá nhân/nhóm là 1 trong các Agent ở các buổi trước.
   - Restructure code áp dụng các step để productionization cho dự án này, deploy và noted api url link
 
